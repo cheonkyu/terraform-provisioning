@@ -1,0 +1,33 @@
+version: 3
+automerge: true
+projects:
+  - name: ecs/demo
+    dir: terraform/ecs/demo
+    workspace: default
+    terraform_version: 1.7.0
+    autoplan:
+      when_modified: ["*.tf", "terraform.tfvars"]
+      enabled: true
+    apply_requirements: []
+    workflow: id
+
+#### Workflows #####
+workflows:
+  # id
+  id:
+    plan:
+      steps:
+        - init:
+            extra_args:
+              [
+                '-backend-config="role_arn=arn:aws:iam::cheonkyu:role/atlantis-20250218063535614400000008"',
+                "-upgrade=false",
+              ]
+        - plan:
+            extra_args:
+              [
+                "-var 'assume_role_arn=arn:aws:iam::cheonkyu:role/atlantis-20250218063535614400000008'",
+              ]
+    apply:
+      steps:
+        - apply
