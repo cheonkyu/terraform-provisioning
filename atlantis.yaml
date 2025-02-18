@@ -10,8 +10,7 @@ projects:
       enabled: true
     apply_requirements: []
     workflow: id
-
-#### Workflows #####
+#### Workflows1 #####
 workflows:
   # id
   id:
@@ -20,13 +19,13 @@ workflows:
         - init:
             extra_args:
               [
-                '-backend-config="role_arn=arn:aws:iam::cheonkyu:role/atlantis-20250218063535614400000008"',
+                '-backend-config="role_arn=arn:aws:iam::116981802476:role/atlantis-20250218131021996800000001"',
                 "-upgrade=false",
               ]
         - plan:
             extra_args:
               [
-                "-var 'assume_role_arn=arn:aws:iam::cheonkyu:role/atlantis-20250218063535614400000008'",
+                "-var 'assume_role_arn=arn:aws:iam::116981802476:role/atlantis-20250218131021996800000001'",
               ]
     apply:
       steps:
