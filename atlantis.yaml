@@ -10,7 +10,6 @@ projects:
       enabled: true
     apply_requirements: []
     workflow: id
-
 #### Workflows #####
 workflows:
   # id
