@@ -1,8 +1,8 @@
 version: 3
 automerge: true
 projects:
-  - name: ecs/demo
-    dir: terraform/ecs/demo
+  - name: route53
+    dir: terraform/route53/create-record
     workspace: default
     terraform_version: 1.7.0
     autoplan:
@@ -16,17 +16,19 @@ workflows:
   id:
     plan:
       steps:
-        - init:
-            extra_args:
-              [
-                '-backend-config="role_arn=arn:aws:iam::cheonkyu:role/atlantis-20250218063535614400000008"',
-                "-upgrade=false",
-              ]
-        - plan:
-            extra_args:
-              [
-                "-var 'assume_role_arn=arn:aws:iam::cheonkyu:role/atlantis-20250218063535614400000008'",
-              ]
+        - init
+        - plan
+        # - init:
+        #     extra_args:
+        #       [
+        #         '-backend-config="role_arn=arn:aws:iam::116981802476:role/atlantis-20250218131021996800000001"',
+        #         "-upgrade=false",
+        #       ]
+        # - plan:
+        #     extra_args:
+        #       [
+        #         "-var 'assume_role_arn=arn:aws:iam::116981802476:role/atlantis-20250218131021996800000001'",
+        #       ]
     apply:
       steps:
         - apply
