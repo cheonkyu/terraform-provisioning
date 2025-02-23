@@ -19,6 +19,15 @@ projects:
       enabled: true
     apply_requirements: []
     workflow: id
+  - name: 02.2-tiers-ec2
+    dir: terraform/scenario/02.2-tiers-ec2
+    workspace: default
+    terraform_version: 1.10.5
+    autoplan:
+      when_modified: ["*.tf", "terraform.tfvars"]
+      enabled: true
+    apply_requirements: []
+    workflow: id
 #### Workflows #####
 workflows:
   # id
